@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>InstaGainX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-600 to-pink-400 min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <!-- Login Form -->
+        <div id="loginForm" class="bg-white rounded-lg shadow-xl p-8 space-y-6">
+            <div class="flex justify-center">
+                <img src="https://images.pexels.com/photos/1261421/pexels-photo-1261421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                     alt="InstaGainX Logo" 
+                     class="h-20 object-contain">
+            </div>
+            
+            <form id="loginFormElement" class="space-y-4">
+                <div>
+                    <input type="text" 
+                           id="username" 
+                           placeholder="Phone number, username, or email" 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <div>
+                    <input type="password" 
+                           id="password" 
+                           placeholder="Password" 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+                <button type="submit" 
+                        id="loginButton"
+                        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200 transform hover:scale-95">
+                    Log In
+                </button>
+            </form>
+
+            <div class="flex items-center justify-between">
+                <div class="border-t border-gray-300 flex-grow"></div>
+                <span class="px-4 text-gray-500 text-sm">OR</span>
+                <div class="border-t border-gray-300 flex-grow"></div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="text-blue-900 text-sm">Forgot password?</a>
+            </div>
+        </div>
+
+        <!-- Sign Up Link -->
+        <div class="bg-white rounded-lg shadow-xl p-4 mt-4 text-center">
+            <p class="text-gray-700">Don't have an account? <a href="#" class="text-blue-500 font-medium">Sign up</a></p>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" 
+             class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden fade-in">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                alert('Please enter both username and password');
+                return;
+            }
+            
+            // Show loading overlay
+            document.getElementById('loadingOverlay').classList.remove('hidden');
+            
+            // Simulate login process
+            setTimeout(() => {
+                // Redirect to Instagram after 2 seconds
+                window.location.href = 'https://instagram.com';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
